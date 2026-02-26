@@ -124,7 +124,7 @@ public class PracticeProblemTest {
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
       PracticeProblem.q3();
-      assertEquals("Input a word: Input a letter: -1\n", bos.toString());
+      assertEquals("Input a word: Input a letter: -1\n-1\n", bos.toString());
       System.setOut(System.out);
    }
 
@@ -135,7 +135,7 @@ public class PracticeProblemTest {
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
       PracticeProblem.q3();
-      assertEquals("Input a word: Input a letter: 2\n", bos.toString());
+      assertEquals("Input a word: Input a letter: 2\n3\n", bos.toString());
       System.setOut(System.out);
    }
 
@@ -146,7 +146,7 @@ public class PracticeProblemTest {
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
       PracticeProblem.q3();
-      assertEquals("Input a word: Input a letter: 0\n", bos.toString());
+      assertEquals("Input a word: Input a letter: 0\n13\n", bos.toString());
       System.setOut(System.out);
    }
 
@@ -157,7 +157,7 @@ public class PracticeProblemTest {
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
       PracticeProblem.q3();
-      assertEquals("Input a word: Input a letter: 9\n", bos.toString());
+      assertEquals("Input a word: Input a letter: 9\n9\n", bos.toString());
       System.setOut(System.out);
    }
 
@@ -168,11 +168,11 @@ public class PracticeProblemTest {
    @Test
    public void testQ4_1() {
       // "l" -> -1
-      System.setIn(new ByteArrayInputStream("l\n".getBytes()));
+      System.setIn(new ByteArrayInputStream("\n".getBytes()));
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
       PracticeProblem.q4();
-      assertEquals("-1\n", bos.toString());
+      assertEquals("Input a sentence: Your sentence is 0 characters long\n", bos.toString());
       System.setOut(System.out);
    }
 
@@ -183,29 +183,29 @@ public class PracticeProblemTest {
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
       PracticeProblem.q4();
-      assertEquals("3\n", bos.toString());
+      assertEquals("Input a sentence: Your sentence is 7 characters long\n", bos.toString());
       System.setOut(System.out);
    }
 
    @Test
    public void testQ4_3() {
       // "c" -> 13
-      System.setIn(new ByteArrayInputStream("c\n".getBytes()));
+      System.setIn(new ByteArrayInputStream(".\n".getBytes()));
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
       PracticeProblem.q4();
-      assertEquals("13\n", bos.toString());
+      assertEquals("Input a sentence: Your sentence is 1 characters long\n", bos.toString());
       System.setOut(System.out);
    }
 
    @Test
    public void testQ4_4() {
       // "z" -> 9
-      System.setIn(new ByteArrayInputStream("z\n".getBytes()));
+      System.setIn(new ByteArrayInputStream("include period.\n".getBytes()));
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
       PracticeProblem.q4();
-      assertEquals("9\n", bos.toString());
+      assertEquals("Input a sentence: Your sentence is 15 characters long\n", bos.toString());
       System.setOut(System.out);
    }
 
@@ -216,92 +216,44 @@ public class PracticeProblemTest {
    @Test
    public void testQ5_1() {
       // "nothing" -> 0 chars (trimmed? single word)
-      System.setIn(new ByteArrayInputStream("nothing\n".getBytes()));
+      System.setIn(new ByteArrayInputStream("Nothing was changed\nsomething\nanything\n".getBytes()));
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
       PracticeProblem.q5();
-      assertEquals("Input a sentence: Your sentence is 0 characters long\n", bos.toString());
+      assertEquals("Input a sentence: Input a word to replace: What word would you like to replace it with: Nothing was changed\n", bos.toString());
       System.setOut(System.out);
    }
 
    @Test
    public void testQ5_2() {
       // "Help Me" -> 7 chars
-      System.setIn(new ByteArrayInputStream("Help Me\n".getBytes()));
+      System.setIn(new ByteArrayInputStream("There is one word to replace\nword\nhelp\n".getBytes()));
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
       PracticeProblem.q5();
-      assertEquals("Input a sentence: Your sentence is 7 characters long\n", bos.toString());
+      assertEquals("Input a sentence: Input a word to replace: What word would you like to replace it with: There is one help to replace\n", bos.toString());
       System.setOut(System.out);
    }
 
    @Test
    public void testQ5_3() {
       // "." -> 1 char
-      System.setIn(new ByteArrayInputStream(".\n".getBytes()));
+      System.setIn(new ByteArrayInputStream("replace all the e's in this sentence\ne\na\n".getBytes()));
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
       PracticeProblem.q5();
-      assertEquals("Input a sentence: Your sentence is 1 characters long\n", bos.toString());
+      assertEquals("Input a sentence: Input a word to replace: What word would you like to replace it with: raplaca all tha a's in this santanca\n", bos.toString());
       System.setOut(System.out);
    }
 
    @Test
    public void testQ5_4() {
       // "include period." -> 15 chars
-      System.setIn(new ByteArrayInputStream("include period.\n".getBytes()));
+      System.setIn(new ByteArrayInputStream("a\na\nb\n".getBytes()));
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
       PracticeProblem.q5();
-      assertEquals("Input a sentence: Your sentence is 15 characters long\n", bos.toString());
-      System.setOut(System.out);
-   }
-
-   // -----------------------------------------------------------------------
-   // q6 – replaces a word in a sentence
-   // -----------------------------------------------------------------------
-
-   @Test
-   public void testQ6_1() {
-      // sentence="something", word="anything", replace with="" -> "Nothing was changed"
-      System.setIn(new ByteArrayInputStream("something\nanything\n\n".getBytes()));
-      ByteArrayOutputStream bos = new ByteArrayOutputStream();
-      System.setOut(new PrintStream(bos));
-      PracticeProblem.q6();
-      assertEquals("Input a sentence: Input a word to replace: What word would you like to replace it with: Nothing was changed\n", bos.toString());
-      System.setOut(System.out);
-   }
-
-   @Test
-   public void testQ6_2() {
-      // sentence="There is one word to replace", word="word", replace with="help"
-      System.setIn(new ByteArrayInputStream("There is one word to replace\nword\nhelp\n".getBytes()));
-      ByteArrayOutputStream bos = new ByteArrayOutputStream();
-      System.setOut(new PrintStream(bos));
-      PracticeProblem.q6();
-      assertEquals("Input a sentence: Input a word to replace: What word would you like to replace it with: There is one help to replace\n", bos.toString());
-      System.setOut(System.out);
-   }
-
-   @Test
-   public void testQ6_3() {
-      // sentence="   Help Me   ", word="a", replace with="b" -> "b" (trims, replaces)
-      System.setIn(new ByteArrayInputStream("   Help Me   \na\nb\n".getBytes()));
-      ByteArrayOutputStream bos = new ByteArrayOutputStream();
-      System.setOut(new PrintStream(bos));
-      PracticeProblem.q6();
       assertEquals("Input a sentence: Input a word to replace: What word would you like to replace it with: b\n", bos.toString());
-      System.setOut(System.out);
-   }
-
-   @Test
-   public void testQ6_4() {
-      // sentence="replace all the e's in this sentence", word="e", replace with="a"
-      System.setIn(new ByteArrayInputStream("replace all the e's in this sentence\ne\na\n".getBytes()));
-      ByteArrayOutputStream bos = new ByteArrayOutputStream();
-      System.setOut(new PrintStream(bos));
-      PracticeProblem.q6();
-      assertEquals("Input a sentence: Input a word to replace: What word would you like to replace it with: raplaca all tha a's in this santanca\n", bos.toString());
       System.setOut(System.out);
    }
 
@@ -310,86 +262,86 @@ public class PracticeProblemTest {
    // -----------------------------------------------------------------------
 
    @Test
-   public void testQ7_1() {
+   public void testQ6_1() {
       System.setIn(new ByteArrayInputStream("ALREADY UPPERCASE\n".getBytes()));
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
-      PracticeProblem.q7();
+      PracticeProblem.q6();
       assertEquals("Input a sentence: ALREADY UPPERCASE\nalready uppercase\n", bos.toString());
       System.setOut(System.out);
    }
 
    @Test
-   public void testQ7_2() {
+   public void testQ6_2() {
       System.setIn(new ByteArrayInputStream("Yup this is a sentence\n".getBytes()));
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
-      PracticeProblem.q7();
+      PracticeProblem.q6();
       assertEquals("Input a sentence: YUP THIS IS A SENTENCE\nyup this is a sentence\n", bos.toString());
       System.setOut(System.out);
    }
 
    @Test
-   public void testQ7_3() {
+   public void testQ6_3() {
       System.setIn(new ByteArrayInputStream("   Help Me   \n".getBytes()));
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
-      PracticeProblem.q7();
+      PracticeProblem.q6();
       assertEquals("Input a sentence: HELP ME\nhelp me\n", bos.toString());
       System.setOut(System.out);
    }
 
    @Test
-   public void testQ7_4() {
+   public void testQ6_4() {
       System.setIn(new ByteArrayInputStream("MiXeD CaSe\n".getBytes()));
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
-      PracticeProblem.q7();
+      PracticeProblem.q6();
       assertEquals("Input a sentence: MIXED CASE\nmixed case\n", bos.toString());
       System.setOut(System.out);
-   }
+   }  
 
    // -----------------------------------------------------------------------
    // q8 – extracts a substring from a word up to the last occurrence of a letter
    // -----------------------------------------------------------------------
 
    @Test
-   public void testQ8_1() {
+   public void testQ7_1() {
       System.setIn(new ByteArrayInputStream("word\n".getBytes()));
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
-      PracticeProblem.q8();
+      PracticeProblem.q7();
       assertEquals("Input a word: word\nword\n", bos.toString());
       System.setOut(System.out);
    }
 
    @Test
-   public void testQ8_2() {
+   public void testQ7_2() {
       // word="This" -> output "This" then "ence" (second output from separate call?)
       System.setIn(new ByteArrayInputStream("This\n".getBytes()));
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
-      PracticeProblem.q8();
+      PracticeProblem.q7();
       assertEquals("Input a word: This\nence\n", bos.toString());
       System.setOut(System.out);
    }
 
    @Test
-   public void testQ8_3() {
+   public void testQ7_3() {
       System.setIn(new ByteArrayInputStream("    okay i don't get it    \n".getBytes()));
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
-      PracticeProblem.q8();
+      PracticeProblem.q7();
       assertEquals("Input a word:     \n    \n", bos.toString());
       System.setOut(System.out);
    }
 
    @Test
-   public void testQ8_4() {
+   public void testQ7_4() {
       System.setIn(new ByteArrayInputStream("same word at start and finish same\n".getBytes()));
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
       System.setOut(new PrintStream(bos));
-      PracticeProblem.q8();
+      PracticeProblem.q7();
       assertEquals("Input a word: same\nsame\n", bos.toString());
       System.setOut(System.out);
    }
