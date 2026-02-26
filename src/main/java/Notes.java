@@ -33,6 +33,7 @@ class Notes {
 
 		//var.length - gives you the length of the string in integer form
 		bString = "Hello World";
+		
 		System.out.println(bString.length());
 
 		// var.trim() - removes all leading and trailing whitespace

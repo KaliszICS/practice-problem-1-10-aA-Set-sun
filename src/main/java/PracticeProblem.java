@@ -45,9 +45,10 @@ public class PracticeProblem {
 
 		System.out.print("Input the word mango: ");
 		String mango = input.nextLine();
+		
+		mango = mango.toLowerCase();
+		System.out.println(mango.compareTo("mango") == 0); //this makes it exact 
 
-		System.out.println(mango.contains("mango") || mango.contains("Mango"));
-		//come back
 
 	}
 
@@ -64,16 +65,10 @@ public class PracticeProblem {
 		System.out.print("Input a letter: ");
 		String letter = input.nextLine();
 
-		//hello
-		//12345
-		//01234
-		//last index is one less than the length of string
+		System.out.println(word.indexOf(letter));
+		System.out.println(word.lastIndexOf(letter));
 
-		int length = word.length();
-
-		System.out.println(word.substring(0, 1));
-
-		//come back again!!
+		//i misrerad the question TwT OTL
 
 	}
 
@@ -89,8 +84,7 @@ public class PracticeProblem {
 		String sentence = input.nextLine();
 
 		
-		System.out.println("Your sentence is " + " characters long");
-
+		System.out.println("Your sentence is " + sentence.length() + " characters long");
 
 	}
 
@@ -101,6 +95,19 @@ public class PracticeProblem {
 		Ask the user "What word would you like to replace it with: ". 
 		Replace all instances of the first word provided with the second word provided in the sentence. */
 	
+		Scanner input = new Scanner(System.in);
+
+		System.out.print("Input a sentence: ");
+		String sentence = input.nextLine();
+
+		System.out.print("Input a word to replace: ");
+		String word = input.nextLine();
+
+		System.out.print("What word would you like to replace it with: ");
+		String replace = input.nextLine();
+
+		System.out.println(sentence.replaceAll(word, replace));
+
 	}
 
 	public static void q6() {
@@ -109,6 +116,16 @@ public class PracticeProblem {
 		Output the sentence in all uppercase and all lowercase on seperate lines in that order. 
 		Remove any extra spaces at the beginning or end. */
 
+		Scanner input = new Scanner(System.in);
+
+		System.out.print("Input a sentence: ");
+		String sentence = input.nextLine();
+
+		sentence = sentence.trim();
+
+		System.out.println(sentence.toUpperCase());
+		System.out.println(sentence.toLowerCase());
+	
 
 	}
 
@@ -116,6 +133,14 @@ public class PracticeProblem {
 		//Write question 7 code here
 		/* Ask the user to "Input a word: ". 
 		Output the first four letters and last four letters of the word on seperate lines. */
+
+		Scanner input = new Scanner(System.in);
+
+		System.out.print("Input a word: ");
+		String word = input.nextLine(); 
+
+		System.out.println(word.substring(0, 4));
+		System.out.println(word.substring(word.length() - 4));
 
 
 	}
