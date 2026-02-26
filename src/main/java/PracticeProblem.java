@@ -46,7 +46,7 @@ public class PracticeProblem {
 		System.out.print("Input the word mango: ");
 		String mango = input.nextLine();
 
-		System.out.println(mango.contains("mango"));
+		System.out.println(mango.contains("mango") || mango.contains("Mango"));
 		//come back
 
 	}
@@ -64,7 +64,15 @@ public class PracticeProblem {
 		System.out.print("Input a letter: ");
 		String letter = input.nextLine();
 
-		String a = word.substring()
+		//hello
+		//12345
+		//01234
+		//last index is one less than the length of string
+
+		int length = word.length();
+
+		System.out.println(word.substring(0, 1));
+
 		//come back again!!
 
 	}
